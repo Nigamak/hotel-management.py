@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite Savvy</title>
+</head>
+<body>
+    <h1>Suite Savvy</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/submit_booking" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="mobile_no">Mobile No:</label><br>
+        <input type="text" id="mobile_no" name="mobile_no" required><br><br>
+        
+        <label for="check_in_date">Check-in Date:</label><br>
+        <input type="date" id="check_in_date" name="check_in_date" required><br><br>
+        
+        <label for="check_out_date">Check-out Date:</label><br>
+        <input type="date" id="check_out_date" name="check_out_date" required><br><br>
+        
+        <label for="room_type">Room Type:</label><br>
+        <select id="room_type" name="room_type" required>
+            <option value="standard">Standard</option>
+            <option value="deluxe">Deluxe</option>
+            <option value="suite">Suite</option>
+        </select><br><br>
+        
+        <label for="num_guests">Number of Guests:</label><br>
+        <input type="number" id="num_guests" name="num_guests" min="1" required><br><br>
+        
+        <label for="special_requests">Special Requests:</label><br>
+        <textarea id="special_requests" name="special_requests" rows="4"></textarea><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
